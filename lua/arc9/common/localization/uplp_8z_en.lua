@@ -3,13 +3,11 @@ L = {}
 L["uplp_country_china"] = "China"
 
 L["uplp_weapon_qbs09"] = "QAQ-09"
-L["uplp_weapon_qbs09_desc"] = "The QAQ-09 is a compact self-loading shotgun developed for military riot control to replace the existing pump-action shotguns in use. It is developed alongside specialized tungsten buckshot and less-lethal loads, which can be used in addition to conventional 12 Gauge shells. Despite its short length, it boasts impressive effective range and accuracy, allowing for effective engagements at medium range.\nIts model name is short for \"Qianxian Anbao Qiangxie\", meaning \"Frontline Security Firearm\"."
+L["uplp_weapon_qbs09_desc"] = "The QAQ-09 is a compact self-loading shotgun developed for military riot control to replace the existing pump-action shotguns in use. It is developed alongside specialized tungsten buckshot and less-lethal loads, which can be used in addition to conventional 12 Gauge shells. Despite its short length, it boasts impressive effective range and accuracy, allowing effective engagements past point blank."
 
 L["uplp_weapon_qbs09_real"] = "QBS-09"
 
 L["uplp_weapon_qbs09_manufacturer"] = "Norinco"
-
-
 
 L["uplp_qbs09_shell_tungsten.printname"] = "QAQ-09 Tungsten Buckshot"
 L["uplp_qbs09_shell_tungsten.compactname"] = "Tung. Buck"
