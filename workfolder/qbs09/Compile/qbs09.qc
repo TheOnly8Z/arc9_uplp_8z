@@ -20,6 +20,22 @@ $bodygroup "rnd" { // 2
 	blank  // 6
 }
 
+$bodygroup "rnd_special" { // 3
+	blank // 0
+	studio "ammo qbs_tungsten.smd" // 1
+	studio "ammo qbs_slug.smd" // 2
+}
+
+$bodygroup "barrel" { // 4
+	studio "qbs09_barrel.smd"
+	studio "qbs09_barrel_short.smd"
+}
+
+$bodygroup "tac" { // 5
+	blank
+	studio "qbs09_rail_side.smd"
+}
+
 $cdmaterials "models\weapons\arc9\uplp"
 
 $attachment "1" "barrel" 0 0 0 rotate -90 0 0
@@ -189,7 +205,7 @@ $sequence "reload_start_insert" {
 }
 
 $sequence "reload_start_empty" {
-	"anims\sgreload_start_empty.smd"
+	"anims\sgreload_start_empty2.smd"
 	fps 30
 	fadein 0.2
 	fadeout 0
@@ -203,7 +219,7 @@ $sequence "reload_start_empty_pumpy" {
 }
 
 $sequence "reload_insert" {
-	"anims\sgreload_insert.smd"
+	"anims\sgreload_insert2.smd"
 	fps 30
 	snap
 }
@@ -223,7 +239,7 @@ $sequence "reload_end_pump" {
 
 
 $sequence "look" {
-	"anims\inspect.smd"
+	"anims\inspect2.smd"
 	snap
 	fps 30
 }

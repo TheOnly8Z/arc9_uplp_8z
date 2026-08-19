@@ -20,7 +20,7 @@ SWEP.Trivia = {
     [ ARC9:GetPhrase( "uplp_realname" ) ] = ARC9:GetPhrase("uplp_weapon_qbs09_real"),
 
     [ ARC9:GetPhrase( "uplp_manufacturer" ) ] = ARC9:GetPhrase( "uplp_weapon_qbs09_manufacturer" ),
-    [ ARC9:GetPhrase( "uplp_caliber" ) ] = ARC9:GetPhrase( "uplp_caliber_184shotshell"),
+    [ ARC9:GetPhrase( "uplp_caliber" ) ] = ARC9:GetPhrase( "uplp_caliber_12gauge"),
     [ ARC9:GetPhrase( "uplp_mechanism" ) ] = ARC9:GetPhrase( "uplp_mechanism_gasoperated" ),
     [ ARC9:GetPhrase( "uplp_country" ) ] = ARC9:GetPhrase( "uplp_country_china" ),
     [ ARC9:GetPhrase( "uplp_year" ) ] = string.format( ARC9:GetPhrase("uplp_year_present"), "2005" ),
@@ -38,7 +38,7 @@ SWEP.StandardPresets = {
 
 }
 
-SWEP.DefaultBodygroups = "00020000000000000" -- Might as well prepare for the future
+SWEP.DefaultBodygroups = "00000000000000000" -- Might as well prepare for the future
 
 ---- Muzzle Effects, Shell Effects, Camera
 SWEP.MuzzleParticle = "muzzleflash_m3"
@@ -90,7 +90,7 @@ SWEP.LaserAlwaysOnTargetInPeek = false
 
 ---- Weapon Stats and Behaviour
 -- Damage
-SWEP.DamageMax = 60 * ARC9.UPLP_ShotgunDamageMaxModifier
+SWEP.DamageMax = 50 * ARC9.UPLP_ShotgunDamageMaxModifier
 SWEP.DamageMin = 20 * ARC9.UPLP_ShotgunDamageMinModifier
 SWEP.DistributeDamage = true
 SWEP.HeadshotDamage = 1
@@ -112,15 +112,15 @@ SWEP.BodyDamageMults = {
     [HITGROUP_RIGHTLEG] = 1,
 }
 
-SWEP.Penetration = 15 -- Units of wood that can be penetrated
-SWEP.ImpactForce = 5 -- How much kick things will have when hit
+SWEP.Penetration = 2 -- Units of wood that can be penetrated
+SWEP.ImpactForce = 3 -- How much kick things will have when hit
 
 -- Range
-SWEP.RangeMin = 10 / ARC9.HUToM
-SWEP.RangeMax = 50 / ARC9.HUToM
+SWEP.RangeMin = 5 / ARC9.HUToM
+SWEP.RangeMax = 35 / ARC9.HUToM
 
 -- Physical Bullets
-SWEP.PhysBulletMuzzleVelocity = 420 / ARC9.HUToM
+SWEP.PhysBulletMuzzleVelocity = 400 / ARC9.HUToM
 SWEP.PhysBulletGravity = 1.5
 SWEP.PhysBulletDrag = 2
 
@@ -131,15 +131,15 @@ SWEP.ChamberSize = 1
 SWEP.ClipSize = 5
 
 -- Recoil
-SWEP.Recoil = 2
-SWEP.RecoilUp = 2
-SWEP.RecoilSide = 1.25
+SWEP.Recoil = 1
+SWEP.RecoilUp = 3
+SWEP.RecoilSide = 1.75
 
 -- Additional recoil when firing rapidly
-SWEP.RecoilMultRecoil = 1.5
+SWEP.RecoilMultRecoil = 2
 
 SWEP.RecoilRandomUp = 1
-SWEP.RecoilRandomSide = 1.5
+SWEP.RecoilRandomSide = 1.75
 
 SWEP.RecoilRise = 0
 SWEP.MaxRecoilBlowback = 0
@@ -156,17 +156,17 @@ SWEP.VisualRecoil = 0.5
 SWEP.VisualRecoilMultSights = 1
 SWEP.VisualRecoilCenter = Vector(2, 11, 2)
 SWEP.VisualRecoilUp = -0.15 -- Vertical tilt
-SWEP.VisualRecoilSide = -0.015 -- Horizontal tilt
-SWEP.VisualRecoilRoll = 30 -- Roll tilt
-SWEP.VisualRecoilPunch = 1.5 -- How far back visual recoil moves the gun
+SWEP.VisualRecoilSide = -0.01 -- Horizontal tilt
+SWEP.VisualRecoilRoll = 20 -- Roll tilt
+SWEP.VisualRecoilPunch = 2 -- How far back visual recoil moves the gun
 SWEP.VisualRecoilDampingConst = 80
 SWEP.VisualRecoilSpringMagnitude = 0.44
 SWEP.VisualRecoilPositionBumpUp = .1
 
 SWEP.VisualRecoilMultHipFire = 1
-SWEP.VisualRecoilUpHipFire = 5
-SWEP.VisualRecoilSideHipFire = -0.2
-SWEP.VisualRecoilRollHipFire = 20
+SWEP.VisualRecoilUpHipFire = 3
+SWEP.VisualRecoilSideHipFire = -0.12
+SWEP.VisualRecoilRollHipFire = 15
 SWEP.VisualRecoilPunchHipFire = 10
 SWEP.VisualRecoilDampingConstHipFire = 15
 SWEP.VisualRecoilPositionBumpUpHipFire = -.5
@@ -174,40 +174,40 @@ SWEP.VisualRecoilPositionBumpUpHipFire = -.5
 -- Accuracy and Spread
 SWEP.UseDispersion = true
 
-SWEP.Spread = 0.032 * ARC9.UPLP_ShotgunSpreadModifier
+SWEP.Spread = 0.035 * ARC9.UPLP_ShotgunSpreadModifier
 SWEP.SpreadAddMidAir = 0
 
 SWEP.DispersionSpread = 0
-SWEP.DispersionSpreadAddHipFire = 0.016
+SWEP.DispersionSpreadAddHipFire = 0.02
 
-SWEP.DispersionSpreadAddRecoil = 0.04
+SWEP.DispersionSpreadAddRecoil = 0.035
 SWEP.DispersionSpreadAddMove = 0.012
 SWEP.DispersionSpreadAddMidAir = 0.05
 
-SWEP.RecoilDissipationRate = 2.5
-SWEP.RecoilResetTime = 0.03
+SWEP.RecoilDissipationRate = 3
+SWEP.RecoilResetTime = 0.02
 SWEP.RecoilPerShot = 1 / 3
 SWEP.RecoilMax = 1
 SWEP.RecoilModifierCap = 1
 SWEP.RecoilModifierCapSights = 2 / 3
 
 -- Weapon handling
-SWEP.SpeedMult = 0.83 -- Walk speed multiplier
-SWEP.SpeedMultSights = 0.72 / 0.85 -- When aiming
+SWEP.SpeedMult = 0.82 -- Walk speed multiplier
+SWEP.SpeedMultSights = 0.7 / 0.85 -- When aiming
 
-SWEP.AimDownSightsTime = 0.35 -- Time it takes to fully enter ADS
-SWEP.SprintToFireTime = 0.32 -- Time it takes to fully enter sprint
+SWEP.AimDownSightsTime = 0.34 -- Time it takes to fully enter ADS
+SWEP.SprintToFireTime = 0.39 -- Time it takes to fully enter sprint
 
 SWEP.SwayAddSights = 1
 SWEP.BarrelLength = 32
 
 -- Shooting and Firemodes
-SWEP.RPM = 150 -- How fast gun shoot -- as fast for cycle anim to play instantly
+SWEP.RPM = 180 -- How fast gun shoot -- as fast for cycle anim to play instantly
 
 SWEP.Num = 8 -- How many bullets shot at once
 
-SWEP.HeatCapacity = 20
-SWEP.HeatDissipation = 0.8
+SWEP.HeatCapacity = 24
+SWEP.HeatDissipation = 1
 SWEP.HeatDelayTime = 1
 
 SWEP.Firemodes = {
@@ -264,15 +264,18 @@ SWEP.ShotgunReloadIncludesChamber = false
 local pathUT2 = ")uplp_urban_temp/"
 local pathUT = ")uplp_urban_temp/spas12/"
 local pathUTC = "))uplp_urban_temp/common/"
+local pathUTV = ")uplp_urban_temp/vepr/" -- temporary, save me zenith
 
 SWEP.ShootSound = {
-    pathUT .. "fire-01.wav",
-    pathUT .. "fire-02.wav",
-    pathUT .. "fire-03.wav",
+    pathUTV .. "fire-01.wav",
+    pathUTV .. "fire-02.wav",
+    pathUTV .. "fire-03.wav",
 }
 
 SWEP.ShootSoundSilenced = {
-    pathUT .. "fire_supp.wav",
+    pathUTV .. "fire-sup-01.wav",
+    pathUTV .. "fire-sup-02.wav",
+    pathUTV .. "fire-sup-03.wav",
 }
 
 SWEP.ShootSoundSilencedIndoor = SWEP.ShootSoundSilenced
@@ -472,7 +475,8 @@ SWEP.Animations = {
         EventTable = {
             { s = UTCrattle, t = 0, v = 0.8 },
             { s = pathUT .. "breechload.ogg", t = 0, v = 0.6 },
-            { s = pathUT .. "forearm_forward.ogg", t = 26 / 30, v = 0.6 },
+            { s = pathUT .. "presscheck1.ogg", t = 20.5 / 30, v = 0.8 },
+            { s = pathUT .. "forearm_forward.ogg", t = 24 / 30, v = 0.6 },
             { s = ")uplp_urban_temp/ar15/" .. "boltdrop.ogg", t = 27 / 30, v = 0.6 },
             { s = pathUTC .. "rattle_b2i_rifle.ogg", t = 30 / 30, v = 0.2 },
             { s = touchh, t = 49 / 30, v = 0.3 },
@@ -505,12 +509,8 @@ SWEP.Animations = {
             { s = pathUT .. "magout.ogg", t = 12.5 / 30, v = 0.8 },
             { s = pathUTC .. "cloth_2.ogg", t = 44 / 30, v = 0.8 },
             { s = pathUTC .. "movement-rifle-04.ogg", t = 50 / 30, v = 0.8 },
-            { s = pathUT2 .. "ar15/selector-01.ogg", t = 55 / 30, v = 0.8 },
-            { s = pathUT .. "presscheck1.ogg", t = 62.5 / 30, v = 1 },
-            { s = pathUT .. "presscheck2.ogg", t = 90 / 30, v = 1 },
-            { s = pathUT2 .. "ar15/selector-06.ogg", t = 94 / 30, v = 0.8 },
-            { s = pathUTC .. "cloth_2.ogg", t = 105 / 30, v = 0.8 },
-            { s = pathUTC .. "movement-rifle-02.ogg", t = 107.5 / 30, v = 0.8 },
+            { s = pathUTC .. "cloth_2.ogg", t = 85 / 30, v = 0.8 },
+            { s = pathUTC .. "movement-rifle-02.ogg", t = 87.5 / 30, v = 0.8 },
             {hide = 1, t = 0},
         },
     },
@@ -572,7 +572,12 @@ SWEP.Animations = {
 ---- Attachments
 
 SWEP.AttachmentElements = {
-    ["uplp_qbs09_stock_in"] = { Bodygroups = { { 1, 1 } } },
+    ["uplp_qbs09_stock_collapsed"] = { Bodygroups = { { 1, 1 } } },
+    ["uplp_qbs09_barrel_short"] = {
+        Bodygroups = { { 4, 1 } },
+        AttPosMods = { [3] = { Pos = Vector(-0.1, -0.05, 16.5) } },
+    },
+    ["uplp_tac_used"] = { Bodygroups = { { 5, 1 } } },
 
     -- SHELLS
     ["uplp_sg_shell_red"] = { Bodygroups = { { 2, 0 } } },
@@ -581,6 +586,9 @@ SWEP.AttachmentElements = {
     ["uplp_sg_shell_green"] = { Bodygroups = { { 2, 3 } } },
     ["uplp_sg_shell_orange"] = { Bodygroups = { { 2, 4 } } },
     ["uplp_sg_shell_yellow"] = { Bodygroups = { { 2, 5 } } },
+
+    ["uplp_qbs09_shell_tungsten"] = { Bodygroups = { { 2, 6 }, { 3, 1 } } },
+    ["uplp_qbs09_shell_slug"] = { Bodygroups = { { 2, 6 }, { 3, 2 } } },
 }
 
 local defatt = "arc9/def_att_icons/"
@@ -596,22 +604,21 @@ SWEP.Attachments = {
         Ang = Angle(90, 90, 180),
         ExcludeElements = {"uplp_no_optics"},
     },
-    --[[
+
     {
         PrintName = ARC9:GetPhrase("uplp_category_barrel"),
-        Category = {"uplp_spas_barrel"},
+        Category = {"uplp_qbs09_barrel"},
         DefaultIcon = Material(defatt .. "barrel.png", "mips smooth"),
         Bone = "body",
-        Pos = Vector(0, 0.5, 19.5),
+        Pos = Vector(0, -0.05, 14),
         Ang = Angle(90, 90, 180),
     },
-    ]]
     {
         PrintName = ARC9:GetPhrase("uplp_category_muzzle"),
         Category = {"uplp_molot_muzzle"},
         Bone = "body",
         Scale = 1.25,
-        Pos = Vector(-0.1, 0.015, 21.4),
+        Pos = Vector(-0.1, -0.05, 21.3),
         Ang = Angle(90, 90, 180),
         ExcludeElements = {"nomuz"},
         RejectAttachments = {
@@ -620,27 +627,27 @@ SWEP.Attachments = {
     },
     {
         PrintName = ARC9:GetPhrase("uplp_category_ammo"),
-        Category = {"uplp_sg_ammo"},
+        Category = {"uplp_qbs09_ammo", "uplp_sg_ammo"},
         Bone = "body",
-        Pos = Vector(-0.1, 2, 5),
+        Pos = Vector(-0.1, 1, 2),
         Ang = Angle(90, 90, 180),
-        Installed = "uplp_sg_shell_red",
-        Integral = "uplp_sg_shell_red",
+        Installed = "uplp_qbs09_shell_tungsten",
+        Integral = "uplp_qbs09_shell_tungsten",
     },
     {
         PrintName = ARC9:GetPhrase("uplp_category_stock"),
         Category = {"uplp_qbs09_stock"},
         DefaultIcon = Material(defatt2 .. "akstock.png", "mips smooth"),
         Bone = "body",
-        Pos = Vector(-0.1, 1.5, -4.5),
+        Pos = Vector(-0.1, 1, -7),
         Ang = Angle(90, 90, 180),
     },
     {
         PrintName = ARC9:GetPhrase("uplp_category_tactical"),
         Category = {"uplp_tac"},
-        Bone = "tac",
-        Pos = Vector(0, 0, 0),
-        Ang = Angle(90, 90, -90),
+        Bone = "body",
+        Pos = Vector(-1.25, 0, 9.3),
+        Ang = Angle(90, -90, 90),
     },
 
     -- Cosmetic shit
