@@ -59,7 +59,7 @@ SWEP.CamOffsetAng = Angle(0, 0, 90)
 
 ---- View & Worldmodel
 SWEP.ViewModel = "models/weapons/arc9/c_uplp_qbs09.mdl"
-SWEP.WorldModel = "models/weapons/arc9/w_uplp_spas.mdl"
+SWEP.WorldModel = "models/weapons/arc9/w_uplp_qbs09.mdl"
 
 SWEP.MirrorVMWM = true
 SWEP.NoTPIKVMPos = true
@@ -67,11 +67,11 @@ SWEP.NoTPIKVMPos = true
 SWEP.WorldModelOffset = {
     Pos = Vector(-5.5, 4, -5),
     Ang = Angle(-5, 0, 180),
-    TPIKPos = Vector(-14, 3, 0),
+    TPIKPos = Vector(-14, 2, 2),
     TPIKAng = Angle(-12, -0, 180),
     Scale = 1,
 
-    TPIKPosSightOffset = Vector(4, 1, -6),
+    TPIKPosSightOffset = Vector(6, 1, -6),
     TPIKHolsterOffset = Vector(8, -0.5, -3),
 }
 
@@ -198,7 +198,7 @@ SWEP.SpeedMultSights = 0.7 / 0.85 -- When aiming
 SWEP.AimDownSightsTime = 0.34 -- Time it takes to fully enter ADS
 SWEP.SprintToFireTime = 0.39 -- Time it takes to fully enter sprint
 
-SWEP.SwayAddSights = 1
+SWEP.SwayAddSights = 0
 SWEP.BarrelLength = 32
 
 -- Shooting and Firemodes
@@ -241,6 +241,22 @@ SWEP.IronSights = {
      Magnification = 1.15,
      ViewModelFOV = 55,
 }
+
+local is_folded = {
+    Pos = Vector(-1.0, -4, -2.5),
+    Ang = Angle(0, 0, 0),
+    Magnification = 1.05,
+    Blur = false,
+    ViewModelFOV = 55,
+}
+
+SWEP.IronSightsHook = function(self) -- If any attachments equipped should alter Irons
+    local attached = self:GetElements()
+
+     if attached["uplp_qbs09_stock_spas_f"] then
+        return is_folded
+    end
+end
 
 -- Customization Menu Info
 SWEP.CustomizePos = Vector(15, 45, 3.25)
@@ -466,6 +482,11 @@ SWEP.Animations = {
             { s = UTCrattle, t = 0, v = 0.8 },
             { s = ShellInsert, t = 12 / 30, v = 0.6 },
         },
+        IKTimeLine = {
+            { t = 0, lhik = 1 },
+            { t = 0.5, lhik = 0 },
+            { t = 1, lhik = 0 },
+        },
     },
     ["reload_start_empty"] = {
         Source = "reload_start_empty",
@@ -481,6 +502,11 @@ SWEP.Animations = {
             { s = pathUTC .. "rattle_b2i_rifle.ogg", t = 30 / 30, v = 0.2 },
             { s = touchh, t = 49 / 30, v = 0.3 },
         },
+        IKTimeLine = {
+            { t = 0, lhik = 1 },
+            { t = 0.55, lhik = 1 },
+            { t = 1, lhik = 0 },
+        },
     },
     ["reload_insert"] = {
         Source = "reload_insert",
@@ -488,6 +514,10 @@ SWEP.Animations = {
         Mult = 1.1,
         EventTable = {
             { s = ShellInsert, t = 0, v = 0.6 },
+        },
+        IKTimeLine = {
+            { t = 0, lhik = 0 },
+            { t = 1, lhik = 0 },
         },
     },
     ["reload_finish"] = {
@@ -497,6 +527,10 @@ SWEP.Animations = {
         EventTable = {
             { s = UTCrattle, t = 0, v = 0.4 },
             { s = b2i, t = 2 / 30, v = 0.6 },
+        },
+        IKTimeLine = {
+            { t = 0, lhik = 0 },
+            { t = 1, lhik = 1 },
         },
     },
     ["inspect"] = {
@@ -577,7 +611,13 @@ SWEP.AttachmentElements = {
         Bodygroups = { { 4, 1 } },
         AttPosMods = { [3] = { Pos = Vector(-0.1, -0.05, 16.5) } },
     },
+    ["uplp_qbs09_stock_tube"] = { Bodygroups = { { 1, 2 } } },
+    ["uplp_qbs09_stock_spas_e"] = { Bodygroups = { { 1, 3 } } },
+    ["uplp_qbs09_stock_spas_f"] = { Bodygroups = { { 1, 4 } } },
     ["uplp_tac_used"] = { Bodygroups = { { 5, 1 } } },
+    ["uplp_grip_used"] = { Bodygroups = { { 6, 1 } } },
+    ["uplp_ar15_pgrip"] = { Bodygroups = { { 7, 1 } } },
+    ["uplp_ar_grip_used"] = { Bodygroups = { { 7, 1 } } },
 
     -- SHELLS
     ["uplp_sg_shell_red"] = { Bodygroups = { { 2, 0 } } },
@@ -603,6 +643,7 @@ SWEP.Attachments = {
         Pos = Vector(-0.1, -0.95, 0),
         Ang = Angle(90, 90, 180),
         ExcludeElements = {"uplp_no_optics"},
+        ExtraSightDistance = 2,
     },
 
     {
@@ -610,7 +651,7 @@ SWEP.Attachments = {
         Category = {"uplp_qbs09_barrel"},
         DefaultIcon = Material(defatt .. "barrel.png", "mips smooth"),
         Bone = "body",
-        Pos = Vector(0, -0.05, 14),
+        Pos = Vector(-0.1, 0.5, 12),
         Ang = Angle(90, 90, 180),
     },
     {
@@ -626,13 +667,18 @@ SWEP.Attachments = {
         }
     },
     {
-        PrintName = ARC9:GetPhrase("uplp_category_ammo"),
-        Category = {"uplp_qbs09_ammo", "uplp_sg_ammo"},
+        PrintName = ARC9:GetPhrase("uplp_category_pistol_grip"),
+        Category = {"uplp_ar15_pgrip"},
+        DefaultIcon = Material(defatt .. "grip_ar.png", "mips smooth"),
+        ActivateElements = {"uplp_ar15_pgrip"},
+        ExcludeElements = {"uplp_no_pgrip"},
         Bone = "body",
-        Pos = Vector(-0.1, 1, 2),
+        RejectAttachments = {
+        ["uplp_ar15_pgrip_std"] = true,
+        },
+        Scale = 1.05,
+        Pos = Vector(-0.1, 2, -3.5),
         Ang = Angle(90, 90, 180),
-        Installed = "uplp_qbs09_shell_tungsten",
-        Integral = "uplp_qbs09_shell_tungsten",
     },
     {
         PrintName = ARC9:GetPhrase("uplp_category_stock"),
@@ -643,54 +689,69 @@ SWEP.Attachments = {
         Ang = Angle(90, 90, 180),
     },
     {
+        PrintName = ARC9:GetPhrase("uplp_category_grip"),
+        Category = {"uplp_grip_vert", "uplp_grip_horiz", "uplp_grip_horiz_long"},
+        DefaultIcon = Material(defatt2 .. "grip.png", "mips smooth"),
+        Bone = "body",
+        Pos = Vector(-0.1, 2.1, 9.75),
+        Ang = Angle(90, 90, 180),
+    },
+    {
         PrintName = ARC9:GetPhrase("uplp_category_tactical"),
         Category = {"uplp_tac"},
+        Bone = "tac",
+        Pos = Vector(0.2, -0.8, -1.5),
+        Ang = Angle(90, 90, -90),
+    },
+    {
+        PrintName = ARC9:GetPhrase("uplp_category_ammo"),
+        Category = {"uplp_qbs09_ammo", "uplp_sg_ammo"},
         Bone = "body",
-        Pos = Vector(-1.25, 0, 9.3),
-        Ang = Angle(90, -90, 90),
+        Pos = Vector(-0.1, 1, 1.5),
+        Ang = Angle(90, 90, 180),
+        Installed = "uplp_qbs09_shell_tungsten",
+        Integral = "uplp_qbs09_shell_tungsten",
     },
 
     -- Cosmetic shit
-    --[[]
     {
         PrintName = ARC9:GetPhrase("uplp_category_sticker") .. " A",
-        StickerModel = "models/weapons/arc9/uplp/stickers/spas_1.mdl",
+        StickerModel = "models/weapons/arc9/uplp/stickers/qbs09_1.mdl",
         Category = "stickers",
-        Bone = "pump",
-        Pos = Vector(0.5, -3.3 + 1.5, 8),
+        Bone = "body",
+        Pos = Vector(1, 2.5, 12),
         Ang = Angle(90, 90, 180),
     },
     {
         PrintName = ARC9:GetPhrase("uplp_category_sticker") .. " B",
-        StickerModel = "models/weapons/arc9/uplp/stickers/spas_2.mdl",
+        StickerModel = "models/weapons/arc9/uplp/stickers/qbs09_2.mdl",
         Category = "stickers",
         Bone = "body",
-        Pos = Vector(0.5, 0.5 + 1.5, 3),
+        Pos = Vector(1, 2.5, 5.5),
         Ang = Angle(90, 90, 180),
     },
     {
         PrintName = ARC9:GetPhrase("uplp_category_sticker") .. " C",
-        StickerModel = "models/weapons/arc9/uplp/stickers/spas_3.mdl",
+        StickerModel = "models/weapons/arc9/uplp/stickers/qbs09_3.mdl",
         Category = "stickers",
         Bone = "body",
-        Pos = Vector(0.5, 0.5 + 1.5, -1.5),
+        Pos = Vector(1, 1.5, 1.75),
         Ang = Angle(90, 90, 180),
     },
     {
         PrintName = ARC9:GetPhrase("uplp_category_sticker") .. " D",
-        StickerModel = "models/weapons/arc9/uplp/stickers/spas_4.mdl",
+        StickerModel = "models/weapons/arc9/uplp/stickers/qbs09_4.mdl",
         Category = "stickers",
         Bone = "body",
-        Pos = Vector(0, -0.5 - 1.5, -3),
+        Pos = Vector(1, 1.5, -1.5),
         Ang = Angle(90, 90, 180),
     },
-    ]]
 
     {
         PrintName = ARC9:GetPhrase("uplp_category_charm"),
         Category = "charm",
-        Bone = "pump",
-        Pos = Vector(1, -2.8, 9.625),
+        Bone = "body",
+        Pos = Vector(0.65, 0.75, 3.2),
         Ang = Angle(90, 0, -90),
     },
 }

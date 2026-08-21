@@ -7,6 +7,9 @@ $bodygroup "rec" { // 0
 $bodygroup "stock" { // 1
 	studio "qbs09_stock.smd"
 	studio "qbs09_stock_in.smd"
+	studio "qbs09_stock_buffer.smd"
+	studio "qbs09_stock_spas.smd"
+	studio "qbs09_stock_spas_in.smd"
 	blank
 }
 
@@ -34,6 +37,21 @@ $bodygroup "barrel" { // 4
 $bodygroup "tac" { // 5
 	blank
 	studio "qbs09_rail_side.smd"
+}
+
+$bodygroup "bottom" { // 6
+	blank
+	studio "qbs09_rail_bottom.smd"
+}
+
+$bodygroup "grip" { // 7
+	studio "qbs09_grip.smd"
+	blank
+}
+
+$bodygroup "handguard" { // 8
+	studio "qbs09_handguard.smd"
+	blank
 }
 
 $cdmaterials "models\weapons\arc9\uplp"

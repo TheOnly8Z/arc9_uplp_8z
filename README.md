@@ -6,9 +6,11 @@ Needs ARC9 PolyArms: https://github.com/dar-su/arc9_uplp
 
 ## Weapons List
 
-#### WIP
+#### Complete
 - QAQ-09 (QBS-09)
-  - Need WM, icons, shell models
+
+#### WIP
+- None
 
 #### Planned
 

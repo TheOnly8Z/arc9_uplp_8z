@@ -1,8 +1,8 @@
-$modelname "weapons/arc9/uplp/stickers/spas_4.mdl"
+$modelname "weapons/arc9/uplp/stickers/qbs09_4.mdl"
 
 $bodygroup "studio"
 {
-	studio "s4.smd"
+	studio "qbs09_sticker_4.smd"
 }
 
 $surfaceprop "default"
